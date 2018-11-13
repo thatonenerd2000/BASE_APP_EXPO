@@ -6,7 +6,8 @@ export default class TranslateAnimation extends Component {
     super(props);
     this.translateAnim = Animated.timing(this.state.translate, {
       toValue: 1,
-      duration: 1000
+      duration: 1000,
+      delay: this.props.delay
     });
   }
 
@@ -17,7 +18,7 @@ export default class TranslateAnimation extends Component {
   render() {
     let translate = this.state.translate.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, 50]
+      outputRange: [this.props.from, this.props.to]
     });
     return (
       <Animated.View

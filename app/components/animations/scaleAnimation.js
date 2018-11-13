@@ -4,10 +4,9 @@ import { Animated } from "react-native";
 export default class ScaleAnimation extends Component {
   constructor(props) {
     super(props);
-    this.scaleAnim = Animated.timing(this.state.scale, {
-      toValue: { x: 1.1, y: 1.1 },
-      duration: 1500,
-      delay: 200
+    this.logoScaleAnim = Animated.timing(this.state.scale, {
+      toValue: 1,
+      duration: 1000
     });
   }
 

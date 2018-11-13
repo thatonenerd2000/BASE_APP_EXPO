@@ -1,14 +1,7 @@
 import React, { Component } from "react";
-import {
-  AppRegistry,
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  ImageBackground
-} from "react-native";
+import { ImageBackground } from "react-native";
 
-import bgimg from "../../media/bg.jpg";
+import bgimg from "../../media/bg2.jpg";
 
 export default class BackgroundImage extends Component {
   render() {

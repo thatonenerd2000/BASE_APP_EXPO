@@ -7,7 +7,7 @@ export default class FadeAnimation extends Component {
     this.fadeAnim = Animated.timing(this.state.fadeAnim, {
       toValue: 1,
       duration: 1000,
-      delay: 500
+      delay: this.props.delay
     });
   }
 

@@ -25,6 +25,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "githubUrl": "https://github.com/thatonenerd2000/BASE_APP_EXPO.git"
   }
 }
