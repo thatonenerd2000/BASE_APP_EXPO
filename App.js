@@ -1,35 +1,70 @@
 import React, { Component } from "react";
 import { AppRegistry, Text, View, StyleSheet } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
+import BottomNavigation, {
+  FullTab
+} from "react-native-material-bottom-navigation";
 
-import Logo from "./app/components/Logo.js";
+import Home from "./app/components/home.js";
 import BackgroundImage from "./app/components/BackgroundImage.js";
-import Menu from "./app/components/menu.js";
+import FadeAnimation from "./app/components/animations/fadeAnimation.js";
 
-export default class Base extends Component {
+export default class HomeScreen extends Component {
+  tabs = [
+    {
+      key: "Announcements",
+      icon: "bullhorn",
+      label: "Announcements",
+      barColor: "#388E3C",
+      pressColor: "rgba(255, 255, 255, 0.16)"
+    },
+    {
+      key: "Home",
+      icon: "home",
+      label: "Home",
+      barColor: "#B71C1C",
+      pressColor: "rgba(255, 255, 255, 0.16)"
+    },
+    {
+      key: "Calendar",
+      icon: "calendar",
+      label: "Calendar",
+      barColor: "#E64A19",
+      pressColor: "rgba(255, 255, 255, 0.16)"
+    }
+  ];
+
+  renderIcon = icon => ({ isActive }) => (
+    <Icon size={24} color="white" name={icon} />
+  );
+
+  renderTab = ({ tab, isActive }) => (
+    <FullTab
+      isActive={isActive}
+      key={tab.key}
+      label={tab.label}
+      renderIcon={this.renderIcon(tab.icon)}
+    />
+  );
+
   render() {
     return (
-      <BackgroundImage>
-        <Logo />
-        <View style={styles.menuContainer}>
-          <Menu itemImage={require("./media/menu/announcements.png")} />
-          <Menu itemImage={require("./media/menu/calendar.png")} />
-          <Menu itemImage={require("./media/menu/staff.png")} />
-          <Menu itemImage={require("./media/menu/contact.png")} />
-          <Menu itemImage={require("./media/menu/student.png")} />
-          <Menu itemImage={require("./media/menu/about.png")} />
+      <View style={{ flex: 1, position: "relative", top: 0 }}>
+        <View style={{ flex: 1 }}>
+          <BackgroundImage>
+            <Home />
+          </BackgroundImage>
         </View>
-      </BackgroundImage>
+        <FadeAnimation delay={500}>
+          <BottomNavigation
+            onTabPress={newTab => this.setState({ activeTab: newTab.key })}
+            renderTab={this.renderTab}
+            tabs={this.tabs}
+          />
+        </FadeAnimation>
+      </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  menuContainer: {
-    top: -150,
-    height: "40%",
-    flexDirection: "row",
-    flexWrap: "wrap"
-  }
-});
-
-AppRegistry.registerComponent("Base", () => Base);
+AppRegistry.registerComponent("HomeScreen", () => HomeScreen);
