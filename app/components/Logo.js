@@ -78,7 +78,6 @@ export default class Logo extends Component {
       inputRange: [0, 1],
       outputRange: ["0deg", "360deg"]
     });
-    console.log(logPosition.height);
 
     return (
       <View>
